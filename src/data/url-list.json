@@ -1,0 +1,8 @@
+{
+    "local": {
+        "authService": "http://localhost:1625"
+    },
+    "production": {
+        "authService": "https://octopus-app-xmsre.ondigitalocean.app"
+    }
+}
