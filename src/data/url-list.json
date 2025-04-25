@@ -6,5 +6,9 @@
     "production": {
         "authService": "https://octopus-app-xmsre.ondigitalocean.app",
         "notificationService": ""
+    },
+    "docker": {
+        "authService": "http://ts-auth-service-1625:1625",
+        "notificationService": "http://ts-notification-service-1689:1689"
     }
 }

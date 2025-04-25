@@ -14,13 +14,16 @@ type ServiceUrls = {
   production: {
     authService: string;
   };
+  docker: {
+    authService: string;  
+  }
 };
 
 const urls: ServiceUrls = serviceUrls as ServiceUrls;
 
-type EnvKeys = 'local' | 'production';
+type EnvKeys = 'local' | 'production' | 'docker';
 
-const env: EnvKeys = (process.env.ENV as EnvKeys) || 'local';
+const env: EnvKeys = (process.env.ENV as EnvKeys) || 'docker';
 const baseUrl = urls[env].authService;
 
 // Define endpoints that require token verification
