@@ -9,6 +9,7 @@ import authRoutes from './routes/authRoutes';
 import healthRoutes from './routes/healthCheckService'
 import { endpointLogging } from './middleware/endpointLogging'
 import cleanTables from './routes/cleanTables'
+import notificationServiceRoutes from './routes/notificationServiceRoutes';
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(endpointLogging);
 
 // Routes
 app.use('/1625', authRoutes);
+app.use('/1689', notificationServiceRoutes);
 app.use('/v2/api', healthRoutes);
 app.use('/v2/api', cleanTables)
 

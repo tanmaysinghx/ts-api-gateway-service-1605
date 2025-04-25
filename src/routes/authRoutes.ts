@@ -28,7 +28,6 @@ const endpointsThatRequireToken = [
   '/auth-service/v2/api/auth/change-password',
   // Add more protected endpoints as needed
 ];
-
 const conditionalVerifyToken = (req: Request, res: Response, next: NextFunction) => {
   const requestPath = req.path;
   if (endpointsThatRequireToken.some(endpoint => requestPath.startsWith(endpoint))) {
@@ -39,7 +38,6 @@ const conditionalVerifyToken = (req: Request, res: Response, next: NextFunction)
 
 router.all('/auth-service/*', conditionalVerifyToken, async (req: Request, res: Response) => {
   const url = `${baseUrl}${req.path.replace('/auth-service', '')}`;
-
   try {
     const axiosOptions = {
       method: req.method.toLowerCase(),
@@ -47,7 +45,6 @@ router.all('/auth-service/*', conditionalVerifyToken, async (req: Request, res: 
       headers: { 'Content-Type': req.headers['content-type'] },
       data: req.method === 'GET' ? undefined : req.body,
     };
-
     const response = await axios(axiosOptions);
     res.status(response.status).json(response.data);
   } catch (error) {

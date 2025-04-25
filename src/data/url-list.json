@@ -1,8 +1,10 @@
 {
     "local": {
-        "authService": "http://localhost:1625"
+        "authService": "http://localhost:1625",
+        "notificationService": "http://localhost:1689"
     },
     "production": {
-        "authService": "https://octopus-app-xmsre.ondigitalocean.app"
+        "authService": "https://octopus-app-xmsre.ondigitalocean.app",
+        "notificationService": ""
     }
 }
