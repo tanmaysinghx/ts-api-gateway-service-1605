@@ -5,7 +5,7 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "windows", "debian-openssl-3.0.x"]
 }
 
@@ -13,13 +13,23 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
+
 model EndpointCall {
-  id            Int      @id @default(autoincrement())
-  serviceName   String
-  endpoint      String
-  clientIp      String
-  zone          String
-  userAgent     String?   
-  timestamp     DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  serviceName String
+  endpoint    String
+  clientIp    String
+  zone        String
+  userAgent   String?
+  timestamp   DateTime @default(now())
 }
 
+model WorkflowRouteMapping {
+  id           String   @id @default(uuid())
+  gearId       String
+  apiVersion   String
+  apiPath      String // like /api/auth/register
+  workflowCode String // like 162500001
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}

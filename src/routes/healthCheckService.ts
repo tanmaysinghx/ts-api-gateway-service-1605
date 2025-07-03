@@ -12,6 +12,7 @@ router.get('/gateway/health', cacheMiddleware, async (req: Request, res: Respons
             services: healthChecks,
         });
     } catch (error) {
+        console.error('Health check error:', error);
         res.status(500).json({
             status: 'unhealthy',
             message: 'Error performing health check',

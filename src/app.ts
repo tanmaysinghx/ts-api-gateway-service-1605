@@ -5,11 +5,10 @@ import helmet from 'helmet';
 import { limiter } from './middleware/rateLimiter';
 import { ipBlocker } from './middleware/ipBlocker';
 import { logger } from './middleware/logger';
-import authRoutes from './routes/authRoutes';
 import healthRoutes from './routes/healthCheckService'
 import { endpointLogging } from './middleware/endpointLogging'
 import cleanTables from './routes/cleanTables'
-import notificationServiceRoutes from './routes/notificationServiceRoutes';
+import apiGatewayRoutes from './routes/apiGatewayRoutes,';
 
 const app = express();
 
@@ -27,9 +26,7 @@ app.use(limiter);
 app.use(ipBlocker);
 app.use(endpointLogging);
 
-// Routes
-app.use('/1625', authRoutes);
-app.use('/1689', notificationServiceRoutes);
+app.use('/api-gateway', apiGatewayRoutes);
 app.use('/v2/api', healthRoutes);
 app.use('/v2/api', cleanTables)
 

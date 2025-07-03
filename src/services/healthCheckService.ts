@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { logServiceStatus } from './serviceRepository';
 
 interface ServiceStatus {
     status: string;
@@ -37,13 +36,13 @@ export const checkServiceHealth = async () => {
                     lastChecked: new Date().toISOString(),
                 };
             } catch (error) {
+                console.error(`Error checking health for service ${service.name}:`, error);
                 serviceStatus[service.name] = {
                     status: 'unhealthy',
                     uptime: '0 hours',
                     lastChecked: new Date().toISOString(),
                 };
             }
-            await logServiceStatus(service.name, serviceStatus[service.name].status);
             return {
                 name: service.name,
                 status: serviceStatus[service.name].status,

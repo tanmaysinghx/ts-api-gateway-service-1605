@@ -7,7 +7,6 @@ const prisma = new PrismaClient();
 router.delete('/clear-tables', async (req: Request, res: Response) => {
     try {
         await prisma.endpointCall.deleteMany({});
-        await prisma.serviceLog.deleteMany({});
         res.status(200).json({
             message: 'Tables cleared successfully.',
         });
