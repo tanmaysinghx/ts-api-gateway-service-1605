@@ -13,23 +13,6 @@ datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
-model ServiceLog {
-  id        Int      @id @default(autoincrement())
-  service   String
-  status    String
-  timestamp DateTime @default(now())
-}
-
-model Service {
-  id        Int      @id @default(autoincrement())
-  name      String
-  url       String
-  healthy   Boolean   @default(true)
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-}
-
 model EndpointCall {
   id            Int      @id @default(autoincrement())
   serviceName   String

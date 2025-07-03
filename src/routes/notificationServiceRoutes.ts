@@ -14,11 +14,14 @@ type ServiceUrls = {
     production: {
         notificationService: string;
     };
+    docker: {
+        notificationService: string;
+    };
 };
 
 const urls: ServiceUrls = serviceUrls as ServiceUrls;
 
-type EnvKeys = 'local' | 'production';
+type EnvKeys = 'local' | 'production' | 'docker';
 
 const env: EnvKeys = (process.env.ENV as EnvKeys) || 'local';
 const baseUrl = urls[env].notificationService;
