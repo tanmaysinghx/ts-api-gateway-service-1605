@@ -16,8 +16,8 @@ export const handleGatewayRoute = async (req: Request, res: Response) => {
 
         const currentEnv = process.env.NODE_ENV ?? 'LOCAL';
         const workFlowApiVersion = process.env.WORKFLOW_API_VERSION ?? 'v1';
-        const workflowUrl = `http://localhost:1606/${workFlowApiVersion}/api/workflow-engine/${version}/${currentEnv}/${workflowCode}`;
-        console.log('Forwarding request to:', workflowUrl);
+        const workflowUrlPrefix = process.env.WORKFLOW_URL_PREFIX ?? 'http://localhost:1606';
+        const workflowUrl = `${workflowUrlPrefix}/${workFlowApiVersion}/api/workflow-engine/${version}/${currentEnv}/${workflowCode}`;
         const result = await axios.post(workflowUrl, req.body, {
             headers: {
                 'Content-Type': 'application/json',
@@ -28,7 +28,6 @@ export const handleGatewayRoute = async (req: Request, res: Response) => {
         if (axios.isAxiosError(err) && err.response) {
             return res.status(err.response.status).json(err.response.data);
         }
-        console.error('Gateway Error:', err.message);
         return res.status(500).json({
             success: false,
             message: 'Gateway failed to forward request',
