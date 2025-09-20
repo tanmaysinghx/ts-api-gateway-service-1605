@@ -57,7 +57,9 @@ export const handleGatewayRoute = async (req: Request, res: Response) => {
             data: req.body,
             headers: forwardedHeaders,
         });
-
+        if (result.headers['set-cookie']) {
+            res.setHeader('set-cookie', result.headers['set-cookie']);
+        }
         return res.status(result.status).json(result.data);
 
     } catch (err: any) {
