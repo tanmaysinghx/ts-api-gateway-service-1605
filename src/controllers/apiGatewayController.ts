@@ -42,6 +42,8 @@ export const handleGatewayRoute = async (req: Request, res: Response) => {
 
         const workflowUrl = `${workflowUrlPrefix}/${apiVersion}/api/workflow-engine/${workflowCode}?region=${region}&apiVersion=${apiVersion}&method=${req.method}`;
 
+        console.log(`Forwarding to workflow URL: ${workflowUrl}`);
+
         logger.info(
             `Forwarding [${req.method}] to workflow URL: ${workflowUrl}`
         );

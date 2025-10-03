@@ -1,7 +1,8 @@
 {
     "local": {
         "authService": "http://localhost:1625",
-        "notificationService": "http://localhost:1689"
+        "notificationService": "http://localhost:1689",
+        "ticketService": "http://localhost:1674"
     },
     "production": {
         "authService": "https://octopus-app-xmsre.ondigitalocean.app",
@@ -9,6 +10,7 @@
     },
     "docker": {
         "authService": "http://ts-auth-service-1625:1625",
-        "notificationService": "http://ts-notification-service-1689:1689"
+        "notificationService": "http://ts-notification-service-1689:1689",
+        "ticketService": "http://ts-ticket-service-1674:1674"
     }
 }
